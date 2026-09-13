@@ -90,8 +90,8 @@ All charts use a consistent Material Design color palette.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/codebysumit/whatsapp-chat-analyzer.git
-cd whatsapp-chat-analyzer
+git clone https://github.com/Wisepool/WhatsAppChatAnalyzer.git
+cd WhatsAppChatAnalyzer
 ```
 
 ### 2. Install dependencies
@@ -107,7 +107,7 @@ The Bengali font and stopword files are already included in the repo under `asse
 
 For local use, create `.streamlit/secrets.toml` (this file is ignored by Git):
 
-```python
+```toml
 gemini_api_key1 = "your-gemini-api-key"
 gemini_api_key2 = "optional-second-gemini-api-key"
 ngrok_auth_token = "optional-ngrok-token"
@@ -120,7 +120,17 @@ The app also accepts `GEMINI_API_KEY1`, `GEMINI_API_KEY2`, and
 
 Get a Gemini key from [aistudio.google.com/apikey](https://aistudio.google.com/apikey) and an ngrok token from [dashboard.ngrok.com](https://dashboard.ngrok.com/get-started/your-authtoken).
 
-### 4. Run the app
+### 4. Deploy on Streamlit Community Cloud
+
+1. Create or open the app from this GitHub repository.
+2. Set the main file to `app.py`.
+3. Open **Manage app > Settings > Secrets**.
+4. Paste the TOML secrets shown above, using your real Gemini API key.
+5. Save the secrets and reboot the app.
+
+The secrets are stored by Streamlit Cloud and are not committed to GitHub.
+
+### 5. Run the app locally
 
 Locally:
 ```bash
