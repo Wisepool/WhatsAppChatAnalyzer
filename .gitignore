@@ -11,6 +11,9 @@ venv/
 
 # Local Streamlit secrets
 .streamlit/
+!.streamlit/
+.streamlit/*
+!.streamlit/secrets.toml.example
 
 # Jupyter Notebook checkpoints and caches
 .ipynb_checkpoints/

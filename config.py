@@ -1,5 +1,6 @@
 import os
 import streamlit as st
+from streamlit.errors import StreamlitSecretNotFoundError
 
 
 # Stopwords directory path
@@ -22,15 +23,20 @@ BENGALI_FONT_PATH = 'assets/font/Siyamrupali.ttf'
 # ]
 
 try:
-    GEMINI_API_KEYS = [
-        key for key in (
-            st.secrets.get("gemini_api_key1"),
-            st.secrets.get("gemini_api_key2"),
-        )
-        if key
-    ]
-    NGROK_AUTH_TOKEN = st.secrets.get("ngrok_auth_token", "")
-except (FileNotFoundError, KeyError):
+    secret_values = st.secrets
+except StreamlitSecretNotFoundError:
+    secret_values = {}
+
+GEMINI_API_KEYS = [
+    key for key in (
+        secret_values.get("gemini_api_key1") or os.getenv("GEMINI_API_KEY1"),
+        secret_values.get("gemini_api_key2") or os.getenv("GEMINI_API_KEY2"),
+    )
+    if key
+]
+NGROK_AUTH_TOKEN = secret_values.get("ngrok_auth_token") or os.getenv("NGROK_AUTH_TOKEN", "")
+
+if not GEMINI_API_KEYS:
     GEMINI_API_KEYS = [
         key for key in (
             os.getenv("GEMINI_API_KEY1"),
@@ -38,7 +44,6 @@ except (FileNotFoundError, KeyError):
         )
         if key
     ]
-    NGROK_AUTH_TOKEN = os.getenv("NGROK_AUTH_TOKEN", "")
 
 # Replace with your actual API key from https://dashboard.ngrok.com/get-started/your-authtoken
 # NGROK_AUTH_TOKEN = "ngrok_auth_token"

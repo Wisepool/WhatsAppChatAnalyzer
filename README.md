@@ -105,15 +105,18 @@ The Bengali font and stopword files are already included in the repo under `asse
 
 ### 3. Add your API keys
 
-Open `config.py` and replace the placeholder values with your own keys:
+For local use, create `.streamlit/secrets.toml` (this file is ignored by Git):
 
 ```python
-GEMINI_API_KEYS = [
-    "gemini_api_key1",
-    "gemini_api_key2",
-]
-NGROK_AUTH_TOKEN = "ngrok_auth_token"
+gemini_api_key1 = "your-gemini-api-key"
+gemini_api_key2 = "optional-second-gemini-api-key"
+ngrok_auth_token = "optional-ngrok-token"
 ```
+
+For Streamlit Community Cloud, open the app's **Settings > Secrets** panel and
+paste the same TOML values there. Never commit real API keys to this repository.
+The app also accepts `GEMINI_API_KEY1`, `GEMINI_API_KEY2`, and
+`NGROK_AUTH_TOKEN` environment variables.
 
 Get a Gemini key from [aistudio.google.com/apikey](https://aistudio.google.com/apikey) and an ngrok token from [dashboard.ngrok.com](https://dashboard.ngrok.com/get-started/your-authtoken).
 
