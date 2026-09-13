@@ -23,10 +23,13 @@ BENGALI_FONT_PATH = 'assets/font/Siyamrupali.ttf'
 
 try:
     GEMINI_API_KEYS = [
-        st.secrets["gemini_api_key1"],
-        st.secrets["gemini_api_key2"],
+        key for key in (
+            st.secrets.get("gemini_api_key1"),
+            st.secrets.get("gemini_api_key2"),
+        )
+        if key
     ]
-    NGROK_AUTH_TOKEN = st.secrets["ngrok_auth_token"]
+    NGROK_AUTH_TOKEN = st.secrets.get("ngrok_auth_token", "")
 except (FileNotFoundError, KeyError):
     GEMINI_API_KEYS = [
         key for key in (
