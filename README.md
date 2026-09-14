@@ -6,11 +6,6 @@ Built to explore group chat behavior using Python, Pandas, Plotly, and NLP techn
 
 ---
 
-## Demo Video
-
-https://github.com/user-attachments/assets/0c359384-5094-41a3-a621-170b2ad3c9b4
-
----
 
 ## Features
 
