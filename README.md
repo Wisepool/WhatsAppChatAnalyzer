@@ -2,7 +2,7 @@
 
 A Streamlit dashboard that takes an exported WhatsApp chat (`.txt` file) and turns it into a full analytics report — message stats, activity timelines, heatmaps, word clouds (Bengali + English), emoji analysis, and an optional AI-generated weekly summary powered by Gemini.
 
-Built as a personal project to explore group chat behavior using Python, Pandas, Plotly, and NLP techniques on mixed-language (Bengali / Banglish / English) data. Runs great on Google Colab, tunneled to a public URL with ngrok.
+Built to explore group chat behavior using Python, Pandas, Plotly, and NLP techniques on mixed-language (Bengali / Banglish / English) data. Runs great on Google Colab, tunneled to a public URL with ngrok.
 
 ---
 
@@ -30,15 +30,15 @@ All charts use a consistent Material Design color palette.
 
 ## Tech Stack
 
-| Purpose            | Library |
+| Purpose | Library |
 |---------------------|---------|
-| Web app / UI         | Streamlit |
-| Data handling        | Pandas |
-| Charts               | Plotly Express |
-| Word cloud           | WordCloud |
-| Emoji parsing        | emoji |
-| Link extraction      | urlextract |
-| AI summary           | Google Gemini SDK and API |
+| Web app / UI | Streamlit |
+| Data handling | Pandas |
+| Charts | Plotly Express |
+| Word cloud | WordCloud |
+| Emoji parsing | emoji |
+| Link extraction | urlextract |
+| AI summary | Google Gemini SDK and API |
 | Public tunnel (Colab) | pyngrok |
 
 ---
@@ -47,27 +47,27 @@ All charts use a consistent Material Design color palette.
 
 ```
 .
-├── app.py                        # Streamlit app entry point (UI + layout)
-├── ngrok_run.py                  # Launches the app through an ngrok tunnel (for Colab)
-├── utils.py                      # Core analysis and plotting functions
-├── dataset_preprocess.py         # Parses raw WhatsApp .txt export into a DataFrame
-├── data_clean.py                 # Text cleaning and tokenization helpers
-├── config.py                     # Paths, stopwords, font, and API keys (see Setup below)
+├── app.py                     # Streamlit app entry point (UI + layout)
+├── ngrok_run.py                # Launches the app through an ngrok tunnel (for Colab)
+├── utils.py                    # Core analysis and plotting functions
+├── dataset_preprocess.py       # Parses raw WhatsApp .txt export into a DataFrame
+├── data_clean.py                # Text cleaning and tokenization helpers
+├── config.py                    # Paths, stopwords, font, and API keys (see Setup below)
 ├── gemini_agent/
-│   ├── gemini_halper.py          # GeminiHelper class (Gemini API wrapper)
-│   ├── gemini_prompt.py          # Prompt templates (e.g. weekly summary)
-│   └── gemini_utils.py           # Helpers like "get last N days of messages"
+│   ├── gemini_halper.py         # GeminiHelper class (Gemini API wrapper)
+│   ├── gemini_prompt.py         # Prompt templates (e.g. weekly summary)
+│   └── gemini_utils.py          # Helpers like "get last N days of messages"
 ├── assets/
 │   ├── font/
-│   │   └── Siyamrupali.ttf       # Bengali font used for word clouds
+│   │   └── Siyamrupali.ttf      # Bengali font used for word clouds
 │   └── stopwords/
 │       ├── stopwords_bengali.txt
 │       ├── stopwords_banglish.txt
 │       └── stopwords_english.txt
 ├── notebook/
 │   └── whatsapp-chat-analyzer.ipynb
-├── requirements.txt                  # Minimal dependencies to run the app
-├── requirements-all.txt              # Full pinned environment (e.g. for Colab)
+├── requirements.txt             # Minimal dependencies to run the app
+├── requirements-all.txt         # Full pinned environment (e.g. for Colab)
 └── README.md
 ```
 
@@ -99,6 +99,7 @@ cd WhatsAppChatAnalyzer
 ```bash
 pip install -r requirements.txt
 ```
+
 Use `requirements-all.txt` instead if you want the full pinned environment (closer to the Colab setup).
 
 The Bengali font and stopword files are already included in the repo under `assets/`, so no extra download is needed.
@@ -113,10 +114,7 @@ gemini_api_key2 = "optional-second-gemini-api-key"
 ngrok_auth_token = "optional-ngrok-token"
 ```
 
-For Streamlit Community Cloud, open the app's **Settings > Secrets** panel and
-paste the same TOML values there. Never commit real API keys to this repository.
-The app also accepts `GEMINI_API_KEY1`, `GEMINI_API_KEY2`, and
-`NGROK_AUTH_TOKEN` environment variables.
+For Streamlit Community Cloud, open the app's **Settings > Secrets** panel and paste the same TOML values there. Never commit real API keys to this repository. The app also accepts `GEMINI_API_KEY1`, `GEMINI_API_KEY2`, and `NGROK_AUTH_TOKEN` environment variables.
 
 Get a Gemini key from [aistudio.google.com/apikey](https://aistudio.google.com/apikey) and an ngrok token from [dashboard.ngrok.com](https://dashboard.ngrok.com/get-started/your-authtoken).
 
@@ -133,15 +131,19 @@ The secrets are stored by Streamlit Cloud and are not committed to GitHub.
 ### 5. Run the app locally
 
 Locally:
+
 ```bash
 streamlit run app.py
 ```
+
 The app opens at `http://localhost:8501`.
 
 On Google Colab (no direct browser access, so use the ngrok tunnel):
+
 ```bash
 python ngrok_run.py
 ```
+
 This starts Streamlit and prints a public ngrok URL you can open in any browser.
 
 ---
@@ -154,6 +156,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Author
 
-**Sumit** ([@codebysumit](https://github.com/codebysumit))
-Diploma in Cyber Forensics and Information Security, Behala Government Polytechnic, Kolkata
-[LinkedIn](https://linkedin.com/in/codebysumit) · codebysumit@gmail.com
+**Prakhar Mehta** ([@Wisepool](https://github.com/Wisepool))
